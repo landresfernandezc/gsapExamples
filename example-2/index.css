@@ -1,0 +1,29 @@
+.box {
+  width: 200px;
+  height: 200px;
+  font-size: 105px;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box__a {
+  margin-top: 300px;
+  background-color: red;
+}
+.box__b {
+  background-color: green;
+  margin-top: 500px;
+}
+.box__c {
+  background-color: blue;
+}
+.box__ghost {
+  background-color: gray;
+}
+
+.container {
+  position: relative;
+  margin-top: 900px;
+  margin-bottom: 500px;
+}/*# sourceMappingURL=index.css.map */

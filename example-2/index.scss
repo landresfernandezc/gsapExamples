@@ -1,0 +1,28 @@
+.box{
+    width: 200px;
+    height: 200px;
+    font-size: 105px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__a{
+        margin-top: 300px;
+        background-color: red;
+    }
+    &__b{
+        background-color: green;
+        margin-top: 500px;
+    }
+    &__c{
+        background-color: blue;
+    }
+    &__ghost{
+        background-color: gray;
+    }
+}
+.container{
+    position: relative;
+    margin-top: 900px;
+    margin-bottom: 500px;
+}

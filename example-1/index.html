@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main>
+      <div class="content">
+        <h1 class="anim1">
+          <span>Bridging the gap</span> <span>between dream</span>
+          <span>and reality</span>
+        </h1>
+        <p class="anim1">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio at ipsa
+          alias modi natus excepturi?
+        </p>
+        <a href="#" class="anim1" id="cta">Start Dreaming</a>
+      </div>
+    </main>
+    <aside>
+      <div class="wrapper">
+        <img
+          class="swirl"
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/swirl.png"
+          alt="Swirl Graphic"
+        />
+      </div>
+    </aside>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script
+      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"
+      
+    ></script>
+    <!-- <script src="index.js"></script> -->
+    <script>
+      //From and To
+      //gsap.to('div',{opacity: 0, duration: 1, y: -50});
+      //gsap.from('div',{opacity: 0, duration: 1, y: -50});
+      //Ease
+      //gsap.from('div',{opacity: 0, duration: 1, y: -50,ease:'Power2.easeInOut'});
+      //   gsap.from("div", {
+      //     opacity: 0,
+      //     duration: 1,
+      //     y: -50,
+      //     ease: "elastic(1,0.3)",
+      //   });
+      //Background position and delay
+      //   gsap.from('div',{opacity: 0, duration: 1, y: -50});
+      //   gsap.from("img", { opacity: 0, duration: 1, y: 30 ,delay:1.4});
+      //   gsap.from("aside", {
+      //     duration: 1,
+      //     backgroundPosition: "200px 0px",
+      //     opacity: 0,
+      //     delay:1.1
+      //   });
+      //Stagger 1 by one showing
+      // gsap.from('.anim1',{opacity: 0, duration: 1, y: -50,stagger:0.6});
+      //   gsap.from("img", { opacity: 0, duration: 1, y: 30 ,delay:1.4});
+      //   gsap.from("aside", {
+      //     duration: 1,
+      //     backgroundPosition: "200px 0px",
+      //     opacity: 0,
+      //     delay:1.1
+      //   });
+      //Text reveal Effect
+    //   var rule = CSSRulePlugin.getRule("span:after");
+    //   gsap.from(".anim1", { opacity: 0, duration: 1, y: -50, stagger: 0.6 });
+    //   gsap.from("img", { opacity: 0, duration: 1, y: 30, delay: 1.4 });
+    //   gsap.to(rule, { cssRule: { scaleY: 0 }, duration: 1, opacity: 0 });
+    //   gsap.from("aside", {
+    //     duration: 1,
+    //     backgroundPosition: "200px 0px",
+    //     opacity: 0,
+    //     delay: 1.1,
+    //   });
+    //Timeline way
+    var tl=gsap.timeline({defaults:{duration:1}});
+    var rule = CSSRulePlugin.getRule("span:after");
+    tl.from(".anim1",{opacity:0,y:-50,stagger:0.6})
+    .to(rule, { cssRule: { scaleY: 0 }, opacity: 0 },"-=2.2")
+    .from("aside", {
+        backgroundPosition: "200px 0px",
+        opacity: 0,
+      },"-=1.5")
+    .from("img", { opacity: 0, y: 30},"-=.5");
+    // 7 Show Click reverse
+    // 7 Show Click reverse
+    document.getElementById('cta').addEventListener('click', () => {
+        console.log('click')
+        tl.reversed() ? tl.play() : tl.reverse();
+    })
+    
+    
+    </script>
+  </body>
+</html>

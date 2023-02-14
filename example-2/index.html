@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main>
+      <div class="box box__a">a</div>
+      <div class="box box__b">b</div>
+      <div class="container">
+        <div class="box box__c">c</div>
+        <div class="box box__ghost">c</div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      //Scrb trigger start with top like the trigger start position and the center of the viewport
+      //First value top relates to the trigger element and the second center relates to the viewport when position the start-trigger
+      //Markers it's a visual indicator when thing should start
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     start: "top center",
+      //     toggleActions: "restart pause reverse pause",
+      //     markers: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      //   ease: "none",
+      // });
+
+      //You can use position like (top,center,bottom) also you can use pixels or percentages always relative to the top
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     toggleActions: "restart pause reverse pause",
+      //     start: "20px 80%",
+      //     markers: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      // });
+      //You can use the end same way but to position the scroller end
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     toggleActions: "restart pause reverse pause",
+      //     start: "20px 80%",
+      //     end:'bottom 100px',
+      //     markers: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      // });
+      //You can use the end just 300 from where the start it's
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     toggleActions: "restart pause reverse pause",
+      //     start: "20px 80%",
+      //     end: "+=300px",
+      //     markers: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      // });
+      //You can use a function to the end to start from the offset of one element
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     toggleActions: "restart pause reverse pause",
+      //     start: "center center",
+      //     end: () => "+=" + document.querySelector(".box__c").offsetWidth,
+      //     markers: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      // });
+      //Scrub property to get back the animation with the scroll
+      // gsap.to(".box__c", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     start: "top center",
+      //     end: "top 100px",
+      //     markers: true,
+      //     scrub: 3, //You can use numbers 1 represent one second 3 represent 3 second
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      //   ease: "none",
+      // });
+      // gsap.to(".box__ghost", {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     start: "top center",
+      //     end: "top 100px",
+      //     markers: true,
+      //     scrub: true,
+      //   },
+      //   x: 400,
+      //   rotation: 360,
+      //   duration: 3,
+      //   ease: "none",
+      // });
+      //You can use timelines to animate
+      // let tl= gsap.timeline( {
+      //   scrollTrigger: {
+      //     trigger: ".box__c",
+      //     start: "top center",
+      //     end: "top 100px",
+      //     markers: true,
+      //     scrub: 3, //You can use numbers 1 represent one second 3 represent 3 second
+      //   },
+      // });
+      // tl.to(".box__c", {
+      //     x: 400,
+      //     rotation: 360,
+      //     duration: 3,
+      //     ease: "none",
+      // }).to(".box__c", {
+      //     backgroundColor:"purple",
+      //     duration: 1,
+      // }).to(".box__c", {
+      //     x:0,
+      //     duration: 3,
+      // });
+      gsap.to(".box__c", {
+        scrollTrigger: {
+          trigger: ".box__c",
+          start: "top center",
+          end: "top 100px",
+          markers: true,
+          scrub: true, //You can use numbers 1 represent one second 3 represent 3 second
+          pin: true,
+        },
+        x: 400,
+        rotation: 360,
+        duration: 3,
+        ease: "none",
+      });
+      //OnLeave, OnEnter, OnEnterBack, OnLeaveBack,OnUpdate,OnToggle, id to multiple scrolltriggers , horizontal=true for horizontal scroller
+      ScrollTrigger.create({
+        trigger:".box__c",
+        start: "top center",
+        end: "top 100px",
+        markers:true,
+        id:"my-id",
+        OnEnter:()=> console.log("enter"),
+        OnLeave:()=> console.log("leave")
+      })
+    </script>
+  </body>
+</html>
